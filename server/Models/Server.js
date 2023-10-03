@@ -17,6 +17,12 @@ class Server {
 
   routes() {
     this.app.use("/notificaciones", require("../routes/notificaciones"));
+    this.app.get("/", (req, res) => {
+      res.json({
+        uwuwuwuwuuwuwuwuwuuwuwuwuwuuwuwuwuwuw:
+          "uwuwuwuwuwuuwuwuwuwuwuwuwuwuwuwuwuwuwuwuwuwu",
+      });
+    });
   }
 
   listen() {
