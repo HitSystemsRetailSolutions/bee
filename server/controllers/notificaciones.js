@@ -5,3 +5,7 @@ const notificacionesPost = (req, res) => {
     ok: true,
   });
 };
+
+module.exports = {
+  notificacionesPost,
+};
