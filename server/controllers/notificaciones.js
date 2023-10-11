@@ -8,16 +8,21 @@ const notificacionesPost = (req, res) => {
     const { items, payments } = data;
 
     const message = {
-      id: data.id,
+      id: data.orderId,
       items,
-      payed: !!payments,
+      payed: payments.length > 0,
     };
+
+    if (message.payed) {
+      message.total = payments[0].amount;
+      message.tip = payments[0].tip;
+    }
 
     console.log({ data, items, payments });
 
     console.log({ message });
 
-    // enviarPedido("tienda1", JSON.stringify(message));
+    enviarPedido("tienda1", JSON.stringify(message));
   }
 
   res.json({
