@@ -1,5 +1,5 @@
 const mqtt = require("mqtt");
-const client = mqtt.connect("mqtt://localhost:1883");
+const client = mqtt.connect("mqtt://63.33.116.171:1883");
 
 client.on("message", (topic, message) => {
   // message is Buffer

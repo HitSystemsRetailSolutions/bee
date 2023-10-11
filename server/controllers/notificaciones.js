@@ -17,6 +17,7 @@ const notificacionesPost = (req, res) => {
       message.total = payments[0].amount;
       message.tip = payments[0].tip;
     }
+    // TODO: añadir la mesa o si es para llevar
     // TODO: eliminar el console.log, son solo para desarrollo
     console.log({ data, items, payments });
     console.log({ message });
