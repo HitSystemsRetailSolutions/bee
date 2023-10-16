@@ -11,13 +11,13 @@ const notificacionesPost = (req, res) => {
       id: data.orderId,
       items,
       payed: payments.length > 0,
+      table: data.type === "table_ordering" ? data.tableInfo.tableId : null,
     };
     // si el pedido esta pagado, añadimos el total y la propina
     if (message.payed) {
       message.total = payments[0].amount;
       message.tip = payments[0].tip;
     }
-    // TODO: añadir la mesa o si es para llevar
     // TODO: eliminar el console.log, son solo para desarrollo
     console.log({ data, items, payments });
     console.log({ message });
