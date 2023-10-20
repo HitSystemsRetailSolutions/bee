@@ -12,16 +12,12 @@ class Server {
 
   middlewares() {
     this.app.use(cors());
+    this.app.use(express.static("public"));
     this.app.use(express.json());
   }
 
   routes() {
     this.app.use("/notificaciones", require("../routes/notificaciones"));
-    this.app.get("/", (req, res) => {
-      res.json({
-        notificaciones: "escuchando",
-      });
-    });
   }
 
   listen() {
