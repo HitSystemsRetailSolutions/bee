@@ -21,7 +21,7 @@ const notificacionesPost = (req, res) => {
       message.tip = payments[0].tip;
     }
     // enviamos el mensaje a la tienda por mqtt
-    enviarPedido(id || "tienda1", JSON.stringify(message));
+    enviarPedido(id || "904", JSON.stringify(message));
   }
 
   res.json({
