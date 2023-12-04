@@ -25,6 +25,8 @@ const notificacionesPost = (req, res) => {
     enviarPedido(id || "904", JSON.stringify(message));
 
     // insertamos el pedido en la base de datos para imprimir
+
+    console.log("enviando a la BBDD...");
     recHit(
       "fac_demo",
       `INSERT INTO impresoraCola (Impresora, Texte) VALUES ('904_bocadillo', '${JSON.stringify(
