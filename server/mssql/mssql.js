@@ -1,4 +1,5 @@
-import * as sql from "mssql";
+const sql = require("mssql");
+
 let pool = undefined;
 
 async function PoolCreation() {
@@ -21,7 +22,7 @@ async function PoolCreation() {
   pool = await new sql.ConnectionPool(config).connect();
 }
 
-export async function recHit(d = "", csql = "") {
+async function recHit(d = "", csql = "") {
   if (!pool) await PoolCreation();
   const c = `use ${d}; 
   ${csql}`;
@@ -29,3 +30,7 @@ export async function recHit(d = "", csql = "") {
 
   return r;
 }
+
+module.exports = {
+  recHit,
+};
