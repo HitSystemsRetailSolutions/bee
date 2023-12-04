@@ -27,11 +27,23 @@ const notificacionesPost = (req, res) => {
     // insertamos el pedido en la base de datos para imprimir
 
     console.log("enviando a la BBDD...");
+    const date = new Date();
+    let ticket = `
+    [magnify: width 2; height 2]
+    [column: left HONEI; right Hora ${date.getHours}:${date.getMinutes}]
+    [column: left - Large; right * 1 \[ \]; indent 60]
+    `;
+
+    console.log(items);
+    items.forEach((item) => {
+      ticket += `[column: left > ${item.name}; right * ${item.quantity} \[ \]]`;
+    });
+
+    ticket += "[cut: feed; partial]";
+
     recHit(
       "fac_demo",
-      `INSERT INTO impresoraCola (id, Impresora, Texte) VALUES (newid(),'904_bocadillo', '${JSON.stringify(
-        message
-      )}')`
+      `INSERT INTO impresoraCola (id, Impresora, Texte, tmstpeticio) VALUES (newid(),'904_bocadillo', '${ticket}', getdate())`
     );
   }
 
