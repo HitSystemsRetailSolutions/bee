@@ -1,5 +1,5 @@
 const Server = require("./server/Models/Server");
-require("dotenv").config();
+require("dotenv").config({ path: `${__dirname}/.env` });
 
 const server = new Server();
 
