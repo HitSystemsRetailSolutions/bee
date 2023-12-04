@@ -1,4 +1,5 @@
 const { enviarPedido } = require("../helpers/mqtt");
+const { recHit } = require("../mssql/mssql");
 
 const notificacionesPost = (req, res) => {
   console.log(req.body);
@@ -22,6 +23,14 @@ const notificacionesPost = (req, res) => {
     }
     // enviamos el mensaje a la tienda por mqtt
     enviarPedido(id || "904", JSON.stringify(message));
+
+    // insertamos el pedido en la base de datos para imprimir
+    recHit(
+      "fac_demo",
+      `INSERT INTO impresoraCola (Impresora, Texte) VALUES ('904_bocadillo', '${JSON.stringify(
+        message
+      )}')`
+    );
   }
 
   res.json({
