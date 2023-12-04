@@ -29,7 +29,7 @@ const notificacionesPost = (req, res) => {
     console.log("enviando a la BBDD...");
     recHit(
       "fac_demo",
-      `INSERT INTO impresoraCola (Impresora, Texte) VALUES ('904_bocadillo', '${JSON.stringify(
+      `INSERT INTO impresoraCola (id, Impresora, Texte) VALUES (newid(),'904_bocadillo', '${JSON.stringify(
         message
       )}')`
     );
