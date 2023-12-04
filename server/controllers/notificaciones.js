@@ -30,13 +30,21 @@ const notificacionesPost = (req, res) => {
     const date = new Date();
     let ticket = `
     [magnify: width 2; height 2]
-    [column: left HONEI; right Hora ${date.getHours}:${date.getMinutes}]
+    [column: left HONEI; right Hora ${date.getHours()}:${date.getMinutes()}]
     [column: left - Large; right * 1 \[ \]; indent 60]
     `;
 
     console.log(items);
     items.forEach((item) => {
-      ticket += `[column: left > ${item.name}; right * ${item.quantity} \[ \]]`;
+      if (item.modifiers) {
+        console.log(items.modifiers);
+        ticket += `[column: left > ${item.name}; right * ${item.quantity} \[ \]]`;
+        item.modifiers.forEach((mod) => {
+          ticket += `[column: left - ${mod.name}; right * ${mod.quantity} \[ \]; indent 60]`;
+        });
+      } else {
+        ticket += `[column: left > ${item.name}; right * ${item.quantity} \[ \]]`;
+      }
     });
 
     ticket += "[cut: feed; partial]";
