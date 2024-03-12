@@ -1,0 +1,38 @@
+html {
+  background-image: url('./wallpaper.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+.box {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+@keyframes updown {
+  0% {
+		text-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		text-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-20px);
+	}
+	100% {
+		text-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+  
+}
+
+h1 {
+  font-size: 100px;
+  animation: updown 5s infinite;
+}
